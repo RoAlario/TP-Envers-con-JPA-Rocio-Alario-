@@ -98,30 +98,19 @@ public class Main {
                 em.getTransaction().commit();
                // System.out.println("Factura actualizada: " + f1);
 
-
-
-            /*
-            //Actualizo una factura
+                
+                //Elimino una factura
                 em.getTransaction().begin();
-               f1 = em.find(Factura.class, 1L);  // Aquí `idFactura` es el identificador de la factura.
-
-                f1.setNum(65);
+                em.remove(f1);
                 em.getTransaction().commit();
-               System.out.println("Factura actualizada: " + f1);
-
-            //Elimino una factura
-            em.getTransaction().begin();
-            em.remove(f1);
-            em.getTransaction().commit();
-
-            //System.out.println("Factura eliminada" + f1);
+                //System.out.println("Factura eliminada" + f1);
 
 
             // Consultar y mostrar la entidad persistida
             //        Persona personaRecuperada = em.find(Persona.class, persona.getId());
             //         System.out.println("Retrieved Persona: " + personaRecuperada.getNombre());
 
-*/
+
         }catch (Exception e){
 
             em.getTransaction().rollback();
