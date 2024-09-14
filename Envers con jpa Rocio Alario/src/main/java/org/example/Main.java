@@ -3,6 +3,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+
 public class Main {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("example-unit");
@@ -15,9 +16,8 @@ public class Main {
                 // Persistir una nueva entidad Person
                 em.getTransaction().begin();
 
-
                 //Creo las personas
-                Cliente cliente1 = Cliente.builder()
+                /*Cliente cliente1 = Cliente.builder()
                         .nombre("Rocio")
                         .apellido("Alario")
                         .dni(44907397)
@@ -89,26 +89,25 @@ public class Main {
                 em.persist(f1);
 
                 em.getTransaction().commit();
-
+*/
 
                 //Actualizo una factura
-                em.getTransaction().begin();
-                f1 = em.find(Factura.class, 1L);
+               Factura f1 = em.find(Factura.class, 1L);
                 f1.setNum(65);
+                em.merge(f1);
                 em.getTransaction().commit();
-               // System.out.println("Factura actualizada: " + f1);
+              //  System.out.println("Factura actualizada: " + f1);
 
-                
-                //Elimino una factura
+
+              //Elimino una factura
                 em.getTransaction().begin();
                 em.remove(f1);
                 em.getTransaction().commit();
-                //System.out.println("Factura eliminada" + f1);
 
 
-            // Consultar y mostrar la entidad persistida
-            //        Persona personaRecuperada = em.find(Persona.class, persona.getId());
-            //         System.out.println("Retrieved Persona: " + personaRecuperada.getNombre());
+             //Consultar y mostrar la entidad persistida
+                f1 = em.find(Factura.class, f1.getIdFactura());
+                 System.out.println("Retrieved Persona: " + f1.getNum());
 
 
         }catch (Exception e){
